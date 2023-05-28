@@ -10,8 +10,11 @@
     padding:0px;
     z-index: 999;
     background-color: black;
+   
 }
-
+button#btnFullScreen svg {
+    color: yellow !important;
+}
 .validation  span.number {
     display: flex;
     justify-content: center;
@@ -21,8 +24,7 @@
 }
 .validation .content {
     width: 100%;
-    margin: auto;
-    padding-top: 20%;
+    margin: auto; 
     transition: .3s;
 
 }
@@ -42,9 +44,17 @@
 .validation .content img {
     display: block;
     margin: 0 auto;
-    width: 250px;
+    width: 95px;
      transition: .3s;
 
+}
+.content-text h1 {
+    font-size: 2.5rem;
+    text-align: left;
+    font-weight: 700;
+}
+.content-text h1 strong {
+    color:#FED30A
 }
 .validation .content p{
     font-size: 11px;
@@ -59,8 +69,7 @@
     position: relative; 
    
 }
-form img {
-    margin-top: 15px;
+form img { 
     position: absolute;
     z-index: 99;
     width: 14px;
@@ -68,21 +77,14 @@ form img {
     
 }select:invalid { color: red; }
 .validation button {
-    width: 150px;
-    margin: 10px auto;
-    display: block;
-    background-color: #FB6E3B;
-    color: white;
-    height: 35px;
-    border-radius: 40px;
-    position: relative;
     width: 190px;
     margin: 15px auto;
     display: block;
-    background-color: #FB6E3B;
-    color: white;
+    background-color: #FED30A;
+    color: black;
     height: 40px;
     border-radius: 40px;
+    font-weight: 700;
     position: relative;
 }
 .validation button img {

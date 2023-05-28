@@ -137,7 +137,7 @@
     </ul>
   </div>
   <div class="search">
-    <h2 style="width:250px;">Adicione, altere ou remova Produtos</h2>
+    <h2 >Adicione, altere ou remova Produtos</h2>
     <form>
       <!--           
         <div class="mylabel">
@@ -316,7 +316,22 @@
 
   console.log(data)
   
-  db.collection('cardapio').doc('cardapioatual').set({data})
+  db.collection('cardapio').doc('cardapioatual').set({
+    
+    id:Math.floor(Math.random() * 1000).toString(),
+    name:'Para Beber', 
+    key:'Comer', 
+    image:'assets/images/cat1.png',
+    image2:'assets/images/cat2.png',
+       
+    },{ 
+        id:Math.floor(Math.random() * 1000).toString(),
+
+    name:'Para Comer', 
+    key:'Beber',
+    image:'assets/images/cat4.png',
+    image2:'assets/images/convenienciawhite1.png',
+  })
 
  })
  form.addEventListener('submit', function(e){
