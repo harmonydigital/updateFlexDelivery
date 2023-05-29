@@ -1,5 +1,6 @@
  data=[]
 database=[]
+msgLoadContainer=document.getElementById('msgLoad')
 
 var apiContainer=document.getElementById('api') 
 var categoriesContainer=document.getElementById('categories') 
@@ -249,7 +250,7 @@ data.map((cardBdmap)=>{
                     inputNome.value=productsMap.name
                     inputCategory.value=productsMap.categoria
                     inputPrice.value=productsMap.price
-                    
+                    console.lo()
                     if(inputSearch){
                         inputSearch.setAttribute('value',value)
     
@@ -276,7 +277,7 @@ data.map((cardBdmap)=>{
 
    editPrd=(ProdThis, inputProd)=>{
  
-        console.log(ProdThis, inputProd)
+        // console.log(ProdThis, inputProd)
         idProdThis=false
         var key=ProdThis.getAttribute('key')
         var modal=document.querySelector('.modal-container')
@@ -315,22 +316,19 @@ data.map((cardBdmap)=>{
 
   } 
 
-  modalForm.addEventListener('submit',function(e){
-        console.log('updat')
+  modalForm.addEventListener('submit',function(e){ 
         e.preventDefault()
         upDateProd()
     })
 
     upDateProd=()=>{
  
-        console.log(idProdThis)
-        // var key=ProdThis.getAttribute('key')
+         
         var modal=document.querySelector('.modal-container')
         modal.classList.toggle('show')
      
          
-        //   input=document.getElementById(inputProd)
-        //   inputSearch=document.getElementById(inputProd+'search')
+        
           
       
         data.map((apiData)=>{   
@@ -340,12 +338,11 @@ data.map((cardBdmap)=>{
                
             
                   if(productsMap.id==idProdThis){
-                    
-                        console.log("s ",inputNome.value)
+                     
                         productsMap.name=inputNome.value
                         productsMap.price=inputPrice.value
 
-                        console.log("sult ",productsMap)
+                        console.log("teste ",data)
 
                     
                   }
@@ -356,8 +353,7 @@ data.map((cardBdmap)=>{
     
        
          
-         console.log(data)
-         getApi(categoriesContainer)
+        //  getApi(categoriesContainer)
 
   }
  refrashCart=(inputProd)=>{ 
