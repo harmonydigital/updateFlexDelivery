@@ -198,7 +198,7 @@
         </div>
         <div class="swiper-slide">
           <img src="assets/images/bannerpanqueca.png" alt="" >
-        </div>
+        </div>''
       </div>
       <div class="swiper-pagination"></div>
     </div>
@@ -282,17 +282,15 @@
       });
 </script>
  <script type="module">
- 
- const firebaseConfig = {
-  apiKey: "AIzaSyAyxC6S9lIs2q6MXPJzB4rpjod3HbRXJgU",
-  authDomain: "harmonyfoodapp.firebaseapp.com",
-  databaseURL: "https://harmonyfoodapp-default-rtdb.firebaseio.com",
-  projectId: "harmonyfoodapp",
-  storageBucket: "harmonyfoodapp.appspot.com",
-  messagingSenderId: "910886750410",
-  appId: "1:910886750410:web:810fa41051ae6d12684c33",
-  measurementId: "G-9HD4J8Z2XP"
- }; 
+
+  const firebaseConfig = {
+      apiKey: "AIzaSyDY6JXe0kBoMU2BlrkafuTm6gq1H5LUohY",
+      authDomain: "harmonydigi-24166.firebaseapp.com",
+      projectId: "harmonydigi-24166",
+      storageBucket: "harmonydigi-24166.appspot.com",
+      messagingSenderId: "970946599618",
+      appId: "1:970946599618:web:e13bd162b24dc46718795b"
+  };  
 
  // Initialize Firebase
  firebase.initializeApp(firebaseConfig); 
@@ -310,30 +308,30 @@
  let databaseDeliveryArr=[]
  let databaseMesas=[] 
  let entregaPed=false
- //UPDATE
+
+
+
+ //UPDATE CARDAPIO
+  
+
+
  formupdateMenu.addEventListener('submit', function(e){
   e.preventDefault()  
+   
 
-  console.log(data)
-  
-  db.collection('cardapio').doc('cardapioatual').set({
-    
-    id:Math.floor(Math.random() * 1000).toString(),
-    name:'Para Beber', 
-    key:'Comer', 
-    image:'assets/images/cat1.png',
-    image2:'assets/images/cat2.png',
-       
-    },{ 
-        id:Math.floor(Math.random() * 1000).toString(),
+  // db.collection('cardapio').doc('cardapioatual').set(
+         
+  // )
 
-    name:'Para Comer', 
-    key:'Beber',
-    image:'assets/images/cat4.png',
-    image2:'assets/images/convenienciawhite1.png',
-  })
 
- })
+ }) //closeFormFn
+
+
+
+
+
+
+ 
  form.addEventListener('submit', function(e){
    e.preventDefault()  
    let idspedidosRecebidos=[]
@@ -570,13 +568,13 @@
  const currencyMenu=db.collection('cardapio') 
  
  currencyMenu.onSnapshot((snapshot) => {  
-  let cardapiobd=[]
+  let data=[]
         snapshot.forEach((doc) => { 
-          cardapiobd.push(doc.data()) 
+          data.push(doc.data()) 
             
         }); 
-
-        localStorage.setItem("cardapioAtual",JSON.stringify(cardapiobd))
+        
+        getApi(categoriesContainer,data)
 
     }, (error) => {
             console.log('Erro Notificações')
