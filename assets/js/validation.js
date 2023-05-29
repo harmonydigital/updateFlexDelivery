@@ -38,14 +38,23 @@ function initApp(user){
   userView=document.getElementById('user')
 
   userView.innerHTML= `  
+
+   
+
+    <div>
+      <a href="https://harmonydigital.github.io/flexDelivery/"  style="color: white;
+      font-size: 1.4rem;
+      margin: 0px 20px;">
+        <i style="color: #ff253a;" class="fa-solid fa-house"></i>
+      </a>
+    </div>
     <div style="padding: 0 15px; "> 
-        <i class="fa-solid fa-user"></i> 
+    <!-- <i class="fa-solid fa-user"></i> -->
         Olá <strong>`+user +`</strong> Seja Bem-vindo!
     </div>
     <div style="position: absolute;top: 0;right: 0;margin: 25px;color: black; ">
-    <button id="btnFullScreen" onclick="fullScreen()"><i style="color: black !important" class="fa-solid fa-expand"></i></button>
-
-</div>
+      <button id="btnFullScreen" onclick="fullScreen()"><i style="color: black !important" class="fa-solid fa-expand"></i></button>
+    </div>
     
   `;
   setTimeout(function init(){

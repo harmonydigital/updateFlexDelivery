@@ -124,18 +124,20 @@
   </div>
   <div class="menu">
     <ul>
-      <button style="color: white;
-      font-size: 20px;
-      font-weight: 300;">+</button> 
+      <!-- <button >+</button>  -->
 
       <form class="updateMenu" >
-        <button style="color: white; font-size: 20px;  font-weight: 300;"><i style="color: white;" class="fa-solid fa-floppy-disk"></i></button> 
+        <button  >
+          <i class="fa-solid fa-floppy-disk"></i>
+          <span>Salvar</span>
+        </button> 
       </form>
 
       <!-- <button id="cartPreview"><img src="assets/images/shopping-cart.png" alt="" srcset=""></button> -->
       <!-- <button><img src="assets/images/menu.png" alt="" srcset=""></button> -->
     </ul>
   </div>
+  
   <div class="search">
     <h2 >Adicione, altere ou remova Produtos</h2>
     <form>
@@ -318,7 +320,7 @@
  formupdateMenu.addEventListener('submit', function(e){
   e.preventDefault()  
    
-
+  console.log('atualizando..')
   // db.collection('cardapio').doc('cardapioatual').set(
          
   // )

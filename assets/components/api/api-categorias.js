@@ -576,10 +576,7 @@ closeCheckout=()=>{
                 disableOnInteraction: false,
                 },
                 
-                });
-        
-            
-        
+                }); 
         
         
         }, 2000);
