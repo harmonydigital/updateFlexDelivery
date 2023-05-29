@@ -40,8 +40,7 @@ data.map((cardBdmap)=>{
               data.push(mapProd)
       
               
-            })
-          //   console.log(data)
+            }) 
       
           })
     }else if(ref==false){
@@ -59,12 +58,16 @@ data.map((cardBdmap)=>{
 
     }else if(ref==true){
         data=[]
-
-        databdMap.dataProd.map((mapProd)=>{
-            data.push(mapProd)
-    
-            
+        getdatabd.map((databdMap)=>{
+       
+            databdMap.dataProd.map((mapProd)=>{
+              data.push(mapProd)
+      
+              
+            }) 
+      
           })
+        
     }
  
     data.map((apiData)=>{ 
