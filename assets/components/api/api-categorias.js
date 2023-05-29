@@ -27,11 +27,11 @@ data.map((cardBdmap)=>{
        
     // })
 })
- getApi=(container,databd)=>{
+ getApi=(container,databd,referencia)=>{
     container.innerHTML =` <div class="tab"> </div>`;
     prods=""
-    getdatabd=databd
-
+    getdatabd=databd 
+    ref=referencia
 
     if(data.length==0){
         getdatabd.map((databdMap)=>{
@@ -44,19 +44,27 @@ data.map((cardBdmap)=>{
           //   console.log(data)
       
           })
-    }else{
-        data=[]
+    }else if(ref==false){
+        console.log(getdatabd)
         getdatabd.map((databdMap)=>{
-       
-            databdMap.dataProd.map((mapProd)=>{
-              data.push(mapProd)
+            
+            // databdMap.dataProd.map((mapProd)=>{
+            //   data.push(mapProd)
       
               
-            })
+            // })
           //   console.log(data)
       
           })
 
+    }else if(ref==true){
+        data=[]
+
+        databdMap.dataProd.map((mapProd)=>{
+            data.push(mapProd)
+    
+            
+          })
     }
  
     data.map((apiData)=>{ 
@@ -342,7 +350,7 @@ data.map((cardBdmap)=>{
                         productsMap.name=inputNome.value
                         productsMap.price=inputPrice.value
 
-                        console.log("teste ",data)
+                       
 
                     
                   }
@@ -353,7 +361,8 @@ data.map((cardBdmap)=>{
     
        
          
-        //  getApi(categoriesContainer)
+         getApi(categoriesContainer,data, false)
+        
 
   }
  refrashCart=(inputProd)=>{ 

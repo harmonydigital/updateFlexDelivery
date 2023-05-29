@@ -347,7 +347,7 @@ formupdateMenu.addEventListener('submit', function(e){
   setTimeout(function(){     
 
    msgLoadContainer.style.cssText='display:none;'
-   alert('Cardápio atualizado com Sucesso!')
+  //  alert('Cardápio atualizado com Sucesso!')
     
   }, 3000);
 
@@ -604,7 +604,7 @@ formupdateMenu.addEventListener('submit', function(e){
             
         }); 
         
-        getApi(categoriesContainer,data)
+        getApi(categoriesContainer,data,true)
 
     }, (error) => {
             console.log('Erro Notificações')
