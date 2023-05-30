@@ -255,11 +255,10 @@ data.map((cardBdmap)=>{
                 
                
             
-                  if(productsMap.id==key ){
+                  if(productsMap.id==key){
                     
                     inputNome.value=productsMap.name 
-                    inputPrice.value=productsMap.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
-                  
+                    inputPrice.value=productsMap.price
                     if(inputSearch){
                         inputSearch.setAttribute('value',value)
     
@@ -268,11 +267,7 @@ data.map((cardBdmap)=>{
                  }) 
             }) 
     
-         }) 
-    
-       
-        
-      
+         })  
 
   } 
   
@@ -286,7 +281,7 @@ data.map((cardBdmap)=>{
 
    editPrd=(ProdThis, inputProd)=>{
  
-        // console.log(ProdThis, inputProd)
+        // conso.le.log(ProdThis, inputProd)
         idProdThis=false
         var key=ProdThis.getAttribute('key')
         var modal=document.querySelector('.modal-container')
@@ -307,8 +302,9 @@ data.map((cardBdmap)=>{
                     idProdThis=key
                     inputNome.value=productsMap.name
                     // inputCategory.value=productsMap.categoria
-                    inputPrice.value=productsMap.price
-                    console.log(productsMap.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
+                    inputPrice.value=productsMap.price 
+
+
                     
                     if(inputSearch){
                         inputSearch.setAttribute('value',value)
@@ -335,25 +331,17 @@ data.map((cardBdmap)=>{
  
          
         var modal=document.querySelector('.modal-container')
-        modal.classList.toggle('show')
-     
-         
-        
-          
+        modal.classList.toggle('show') 
       
         data.map((apiData)=>{   
             apiData.itens.map((itensMap)=>{     
-                 itensMap.products.map((productsMap)=>{ 
-                
-               
+                 itensMap.products.map((productsMap)=>{  
             
                   if(productsMap.id==idProdThis){
                      
                         productsMap.name=inputNome.value
-                        productsMap.price=inputPrice.value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
-
-                       
-
+                        productsMap.price=parseInt(inputPrice.value).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+                     
                     
                   }
                  }) 
@@ -413,7 +401,8 @@ data.map((cardBdmap)=>{
                     prodsSelct.push(productsMap)
                     //  console.log(prodsSelct)
 
-                
+                    
+                    
             
                     cartPreview.innerHTML= `    <div >     <button id="cartPreview" onclick="showCart()"><img src="assets/images/shopping-cart.png" alt=""></button> <span class="qtdIcon">`+cartQtd +` </span>   </div>  `;  
                     cartContainer.innerHTML+= `  
