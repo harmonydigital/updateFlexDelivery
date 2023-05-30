@@ -44,15 +44,10 @@ data.map((cardBdmap)=>{
       
           })
     }else if(ref==false){
-        console.log(getdatabd)
+       
         getdatabd.map((databdMap)=>{
             
-            // databdMap.dataProd.map((mapProd)=>{
-            //   data.push(mapProd)
-      
-              
-            // })
-          //   console.log(data)
+          
       
           })
 
@@ -122,14 +117,13 @@ data.map((cardBdmap)=>{
             var Contentsubs=document.getElementById(tabContentMap.id)
            
           innitProd=tabContentMap.products.map((productsMap)=>{  
-            prods+=productsMap
-                    // console.log(productsMap.id)
+            prods+=productsMap 
                     Contentsubs.innerHTML+= `  
                         <div class="produto">
                                 <img src="`+productsMap.img +`" alt="" style="display:none;" ></img>
                             <div class="prod-val">
                                 <h3 class="title-prod">`+productsMap.name +`</h3> 
-                                <span class="valor">`+productsMap.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</span>
+                                <span class="valor">`+parseInt(productsMap.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</span>
                             </div>
                             <div class="editProd" >
                                 <button key="`+productsMap.id +`" onclick="editPrd(this,`+productsMap.id +`); "><i class="fa-regular fa-pen-to-square"></i></button>
@@ -340,9 +334,8 @@ data.map((cardBdmap)=>{
                   if(productsMap.id==idProdThis){
                      
                         productsMap.name=inputNome.value
-                        productsMap.price=parseInt(inputPrice.value).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
-                     
-                    
+                        // productsMap.price=parseInt(inputPrice.value).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+                        productsMap.price=inputPrice.value 
                   }
                  }) 
             }) 
