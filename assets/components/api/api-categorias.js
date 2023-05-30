@@ -234,8 +234,7 @@ data.map((cardBdmap)=>{
   }
 
   editPrd=(ProdThis, inputProd)=>{
- 
-        console.log(ProdThis, inputProd)
+  
         var key=ProdThis.getAttribute('key')
         var modal=document.querySelector('.modal-container')
         modal.classList.toggle('show')
@@ -258,10 +257,9 @@ data.map((cardBdmap)=>{
             
                   if(productsMap.id==key ){
                     
-                    inputNome.value=productsMap.name
-                    inputCategory.value=productsMap.categoria
-                    inputPrice.value=productsMap.price
-                    console.lo()
+                    inputNome.value=productsMap.name 
+                    inputPrice.value=productsMap.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+                  
                     if(inputSearch){
                         inputSearch.setAttribute('value',value)
     
@@ -308,8 +306,9 @@ data.map((cardBdmap)=>{
                   if(productsMap.id==key ){
                     idProdThis=key
                     inputNome.value=productsMap.name
-                    inputCategory.value=productsMap.categoria
+                    // inputCategory.value=productsMap.categoria
                     inputPrice.value=productsMap.price
+                    console.log(productsMap.price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}))
                     
                     if(inputSearch){
                         inputSearch.setAttribute('value',value)
@@ -351,7 +350,7 @@ data.map((cardBdmap)=>{
                   if(productsMap.id==idProdThis){
                      
                         productsMap.name=inputNome.value
-                        productsMap.price=inputPrice.value
+                        productsMap.price=inputPrice.value.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
 
                        
 

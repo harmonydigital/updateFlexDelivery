@@ -8,6 +8,7 @@
     height: auto;
     margin: 10px 10px;
     justify-content: space-between;
+    
 }
 .produto img {
     width: 80px;
@@ -18,6 +19,10 @@
     
         position: initial;
      
+}
+
+.editProd {
+    display: flex;
 }
 .prod-val{
     padding: 10px;

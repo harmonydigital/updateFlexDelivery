@@ -1,45 +1,43 @@
  
-validateView=document.getElementById('validation')
+// validateView=document.getElementById('validation')
 
-if (localStorage.getItem("lastname")){
-  validateView.style.display="none"
-  initApp(localStorage.getItem("lastname"))
-  inputUserName=localStorage.getItem("lastname")
+// if (localStorage.getItem("lastname")){
+//   validateView.style.display="none"
+//   initApp(localStorage.getItem("lastname"))
+//   inputUserName=localStorage.getItem("lastname")
   
-}
+// }
 
-function validation(event){
+// function validation(event){
 
-     event.preventDefault()
-     var select=document.getElementById('selectValidate')
-     var selectValue=select.options[select.selectedIndex].value
-     var validateView=document.getElementById('validation')
-     var userView=document.getElementById('user')
-       inputUserName=document.getElementById('userName').value
+//      event.preventDefault()
+//      var select=document.getElementById('selectValidate')
+//      var selectValue=select.options[select.selectedIndex].value
+//      var validateView=document.getElementById('validation')
+//      var userView=document.getElementById('user')
+//        inputUserName=document.getElementById('userName').value
    
-       text = select.options[select.selectedIndex].text;
+//        text = select.options[select.selectedIndex].text;
  
 
   
-       if(inputUserName.length>3 & selectValue!=1){
-        localStorage.setItem("lastname", inputUserName);
-        retirada=text;
-        initApp(inputUserName)
+//        if(inputUserName.length>3 & selectValue!=1){
+//         localStorage.setItem("lastname", inputUserName);
+//         retirada=text;
+//         initApp(inputUserName)
      
-      }else{
-        alert('Preencha os Campos')
+//       }else{
+//         alert('Preencha os Campos')
   
-      }
+//       }
 
 
-}
+// }
 function initApp(user){
  
   userView=document.getElementById('user')
 
-  userView.innerHTML= `  
-
-   
+  userView.innerHTML= `   
 
     <div>
       <a href="https://harmonydigital.github.io/flexDelivery/"  style="color: white;
@@ -50,15 +48,14 @@ function initApp(user){
     </div>
     <div style="padding: 0 15px; "> 
     <!-- <i class="fa-solid fa-user"></i> -->
-        Olá <strong>`+user +`</strong> Seja Bem-vindo!
+        Olá <strong>`+user +`</strong> bem-vindo!
     </div>
-    <div style="position: absolute;top: 0;right: 0;margin: 25px;color: black; ">
+    <div style="position: absolute;top: 0;right: 0;margin: 30px;color: black; ">
       <button id="btnFullScreen" onclick="fullScreen()"><i style="color: black !important" class="fa-solid fa-expand"></i></button>
     </div>
     
   `;
-  setTimeout(function init(){
-    validateView.style.display="none"
-    document.getElementsByTagName('body')[0].style.cssText="overflow:auto;"
- }, 1000);
+//  
 }
+
+initApp('Administrador')

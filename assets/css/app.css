@@ -2,7 +2,7 @@ body {
     font-family: 'Lexend Deca', sans-serif;
     background-color: #FED30A;
     margin: 0px;
-    overflow: hidden;
+    overflow: auto;
     max-width: 800px; 
     margin: 0 auto;
 }
