@@ -296,7 +296,7 @@ formupdateMenu.addEventListener('submit', function(e){
   console.log(msgLoadContainer)
    msgLoadContainer.style.cssText='display:flex;'
 
-  // db.collection('cardapio').doc('cardapioatual').set({dataProd:data})
+  db.collection('cardapio').doc('cardapioatual').set({dataProd:data})
   // db.collection('cardapio').doc('cardapioatual').set( {dataProd: [
   //           {
   //               "image2": "assets/images/cat2.png",
