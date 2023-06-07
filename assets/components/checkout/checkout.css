@@ -28,6 +28,7 @@ textarea {
     font-weight:300;
 
 }
+
 textarea::-webkit-input-placeholder { /* Edge */
   color: #73859E;
   padding: 20px ;
@@ -58,11 +59,11 @@ textarea::placeholder {
 }
 label {
     color: #73859E;
-    font-size: 15px;
+    font-size: 1.4rem;
     font-weight: 300;
     top:0;
     bottom:0;
-    height: 46px;
+    height: auto;
 }
 div#checkout form {
     width: 80%;

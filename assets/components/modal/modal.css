@@ -51,8 +51,11 @@ button#btnSalvar {
     justify-content: center;
 }
 .modal .mylabel  label{
-   border: 1px solid;
-   border-right: 0;
+    border: 1px solid;
+    border-right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .modal .mylabel  input{
     border: 1px solid;
