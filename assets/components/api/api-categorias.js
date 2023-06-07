@@ -31,6 +31,8 @@ data.map((cardBdmap)=>{
     container.innerHTML =` <div class="tab"> </div>`;
     prods=""
     getdatabd=databd 
+
+    console.log(databd)
     ref=referencia
 
     if(data.length==0){
@@ -123,7 +125,7 @@ data.map((cardBdmap)=>{
                                 <img src="`+productsMap.img +`" alt="" style="display:none;" ></img>
                             <div class="prod-val">
                                 <h3 class="title-prod">`+productsMap.name +`</h3> 
-                                <span class="valor">`+parseInt(productsMap.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</span>
+                                <span class="valor">`+parseFloat(productsMap.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</span>
                             </div>
                             <div class="editProd" >
                                 <button key="`+productsMap.id +`" onclick="editPrd(this,`+productsMap.id +`); "><i class="fa-regular fa-pen-to-square"></i></button>
@@ -299,7 +301,7 @@ data.map((cardBdmap)=>{
                     inputPrice.value=productsMap.price 
 
 
-                    
+                        console.log(productsMap.price,'productsMap.price ')
                     if(inputSearch){
                         inputSearch.setAttribute('value',value)
     
@@ -336,6 +338,8 @@ data.map((cardBdmap)=>{
                         productsMap.name=inputNome.value
                         // productsMap.price=parseInt(inputPrice.value).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
                         productsMap.price=inputPrice.value 
+
+                        console.log(productsMap.price,'productsMap.price ')
                   }
                  }) 
             }) 
@@ -343,6 +347,7 @@ data.map((cardBdmap)=>{
          }) 
     
        
+         console.log(data,'data ')
          
          getApi(categoriesContainer,data, false)
         
