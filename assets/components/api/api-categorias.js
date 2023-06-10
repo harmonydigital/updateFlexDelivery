@@ -114,12 +114,18 @@ data.map((cardBdmap)=>{
             document.getElementById(apiData.id.toString()).innerHTML+= ` 
                
                 <div id="`+tabContentMap.id +`" class="tabcontent">  
+                                       <button class='btn addProd'>ADICIONAR PRODUTOS EM `+tabContentMap.name    +` </button>  
+
                 </div>
+
+              
             `; 
+
             var Contentsubs=document.getElementById(tabContentMap.id)
            
           innitProd=tabContentMap.products.map((productsMap)=>{  
             prods+=productsMap 
+
                     Contentsubs.innerHTML+= `  
                         <div class="produto">
                                 <img src="`+productsMap.img +`" alt="" style="display:none;" ></img>
@@ -153,6 +159,8 @@ data.map((cardBdmap)=>{
    
                 }) 
         }) 
+
+        
      }) 
 
      openTable(false)

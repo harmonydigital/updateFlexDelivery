@@ -11,6 +11,17 @@ button#btnFullScreen {
     color: white;
 }
 
+button.btn.addProd {
+    background: blue;
+    color: white;
+    padding: 25px;
+    border-radius: 20px;
+    margin: 0 auto 30px;
+    display: block;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
 button {
     background:transparent;
     border:0;
