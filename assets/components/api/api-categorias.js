@@ -114,7 +114,7 @@ data.map((cardBdmap)=>{
             document.getElementById(apiData.id.toString()).innerHTML+= ` 
                
                 <div id="`+tabContentMap.id +`" class="tabcontent">  
-                                       <button class='btn addProd'>ADICIONAR PRODUTOS EM `+tabContentMap.name    +` </button>  
+                                       <button class='btn addProd'><i class="fa-solid fa-bottle-droplet"></i> ADICIONAR PRODUTOS EM `+tabContentMap.name    +` </button>  
 
                 </div>
 
