@@ -10,16 +10,21 @@ button#btnFullScreen {
     background: transparent;
     color: white;
 }
-
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    min-width: 180px !important;
+}
 button.btn.addProd {
     background: blue;
     color: white;
-    padding: 25px;
-    border-radius: 20px;
+    padding: 10px;
+    border-radius: 16px;
     margin: 0 auto 30px;
     display: block;
     text-transform: uppercase;
-    font-size: 1.2rem;
+    font-size: 0.7rem;
+    height: 45px;
 }
 
 button {
