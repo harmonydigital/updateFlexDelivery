@@ -155,7 +155,7 @@ data.map((cardBdmap)=>{
         }) 
      }) 
 
-     openTable()
+     openTable(false)
     
  }
   
@@ -554,14 +554,22 @@ closeCheckout=()=>{
     ///update
    
    
-    openTable=()=>{
+    openTable=(event)=>{
+
+       
+      
         setTimeout(function(){
     
             tabcontent = document.getElementsByClassName("tabcontent");
             tablinks = document.getElementsByClassName("tablinks");
+
+            if(event==false){
+ 
             tabcontent[0].style.cssText="display:block"
             tabcontent[1].style.cssText="display:block"
             tablinks[0].setAttribute("class", "tablinks active")
+
+
             var swiper = new Swiper(".mySwiperTabs", {
                 slidesPerView: 2,
                 cssMode: true,
@@ -570,10 +578,16 @@ closeCheckout=()=>{
                 disableOnInteraction: false,
                 },
                 
-                }); 
+            }); 
+            }else{
+                console.log(event)
+            }
+
+
+
         
         
-        }, 2000);
+        }, 500);
     }
  
   
