@@ -298,195 +298,180 @@ formupdateMenu.addEventListener('submit', function(e){
   console.log(msgLoadContainer)
    msgLoadContainer.style.cssText='display:flex;'
 
-  // db.collection('cardapio').doc('cardapioatual').set({dataProd:data})
+  db.collection('cardapio').doc('cardapioatual').set({dataProd:data})
  
-  db.collection('cardapio').doc('cardapioatual').set( {dataProd:  
-    [
-    {
-        "key": "Comer",
-        "itens": [{
+//   db.collection('cardapio').doc('cardapioatual').set( {dataProd:  
+//     [
+//     {
+//         "key": "Comer",
+//         "itens": [{
 
-                "name": "Copão de Whisky",
-                "id": "134",
-                "products": [
-                    {
-                        "quantidade": 0,
-                        "name": "Adicional + Red Bull",
-                        "id": "366",
-                        "img": "assets/images/produtos/energeticoredbull.png",
-                        "price": 10
-                    },
-                    {
-                        "img": "assets/images/produtos/copocavalobranco.png",
-                        "price": "25",
-                        "id": "959",
-                        "name": "Copão Whisky Cavalo Branco",
-                        "quantidade": 0
-                    },
-                    {
-                        "price": "30.00",
-                        "img": "assets/images/produtos/coporedlabel.png",
-                        "quantidade": 0,
-                        "name": "Copão Whisky Red Label 1L",
-                        "id": "114"
-                    },
-                    {
-                        "quantidade": 0,
-                        "id": "810",
-                        "name": "Copão Whisky Jack Daniels",
-                        "price": "35.00",
-                        "img": "assets/images/produtos/copojackdaniels.png"
-                    },
-                    {
-                        "img": "assets/images/produtos/copopassport.png",
-                        "quantidade": 0,
-                        "name": "Copão Whisky Passport",
-                        "price": 15,
-                        "id": "37"
-                    },
-                    {
-                        "id": "572",
-                        "name": "Copão Whisky Passport Mel",
-                        "price": 20,
-                        "quantidade": 0,
-                        "img": "assets/images/produtos/copopassportmel.png"
-                    }
-                ]
+//                 "name": "Copão de Whisky",
+//                 "id": Math.floor(Math.random() * 1000).toString(),
+//                 "products": [
+//                     {
+//                         "quantidade": 0,
+//                         "name": "Adicional + Red Bull",
+//                         "id": Math.floor(Math.random() * 1000).toString(),
+//                         "img": "assets/images/produtos/energeticoredbull.png",
+//                         "price": 10
+//                     },
+//                     {
+//                         "img": "assets/images/produtos/copocavalobranco.png",
+//                         "price": "25",
+//                         "id": Math.floor(Math.random() * 1000).toString(),
+//                         "name": "Copão Whisky Cavalo Branco",
+//                         "quantidade": 0
+//                     },
+//                     {
+//                         "price": "30.00",
+//                         "img": "assets/images/produtos/coporedlabel.png",
+//                         "quantidade": 0,
+//                         "name": "Copão Whisky Red Label 1L",
+//                         "id": Math.floor(Math.random() * 1000).toString()
+//                     },
+//                     {
+//                         "quantidade": 0,
+//                         "id":Math.floor(Math.random() * 1000).toString(),
+//                         "name": "Copão Whisky Jack Daniels",
+//                         "price": "35.00",
+//                         "img": "assets/images/produtos/copojackdaniels.png"
+//                     },
+//                     {
+//                         "img": "assets/images/produtos/copopassport.png",
+//                         "quantidade": 0,
+//                         "name": "Copão Whisky Passport",
+//                         "price": 15,
+//                         "id": Math.floor(Math.random() * 1000).toString()
+//                     },
+//                     {
+//                         "id": Math.floor(Math.random() * 1000).toString(),
+//                         "name": "Copão Whisky Passport Mel",
+//                         "price": 20,
+//                         "quantidade": 0,
+//                         "img": "assets/images/produtos/copopassportmel.png"
+//                     }
+//                 ]
 
-              },{
-                "id": "656",
-                "name": "Vodkas",
-                "products": [
-                    {
-                        "price": 13,
-                        "id": "120",
-                        "img": "assets/images/produtos/smirnoffice.png",
-                        "name": "Vodka Smirnoff Ice Long Neck",
-                        "quantidade": 0
-                    },
-                    {
-                        "price": 9.5,
-                        "id": "518",
-                        "name": "Vodka Smirnorff Lata",
-                        "img": "assets/images/produtos/smirnofficelata.png",
-                        "quantidade": 0
-                    },
-                    {
-                        "quantidade": 0,
-                        "name": "Vodka Smirnoff 1L",
-                        "id": "925",
-                        "price": 49,
-                        "img": "assets/images/produtos/vodkasmirnoff1l.png"
-                    },
-                    {
-                        "img": "assets/images/produtos/ousadia.png",
-                        "id": "43",
-                        "price": 7.5,
-                        "quantidade": 0,
-                        "name": "Vodka Ousadia"
-                    },
-                    {
-                        "img": "assets/images/produtos/smirnoffsabor.png",
-                        "quantidade": 0,
-                        "price": 58,
-                        "name": "Vodka Smirnorff Sabor",
-                        "id": "602"
-                    },
-                    {
-                        "id": "943",
-                        "name": "Vodka Askov",
-                        "img": "assets/images/produtos/askov.png",
-                        "price": 18,
-                        "quantidade": 0
-                    },
-                    {
-                        "img": "assets/images/produtos/vodkaaskovsabor.png",
-                        "id": "874",
-                        "price": 18,
-                        "name": "Vodka Askov Sabor 1L",
-                        "quantidade": 0
-                    }
-                ]
-              }
-        ],
-        "name": "Adega",
-        "id": "213",
-        "image2": "assets/images/glass.png",
-        "image": "assets/images/glass.png"
-    },
-    {
-        "key": "Beber",
-        "image2": "assets/images/burguer.png",
-        "image": "assets/images/burguer.png",
-        "name": "Refeição",
-        "itens": [
-        {
-                "id": "849",
-                "name": "Porções",
-                "products": [
-                    {
-                        "quantidade": 0,
-                        "name": "Porção Calabresa",
-                        "img": "assets/images/produtos/porcaodeCalabresa.png",
-                        "price": "30",
-                        "id": "178",
-                        "key": ""
-                    },
-                    {
-                        "quantidade": 0,
-                        "name": "Porção Picanha",
-                        "id": "78",
-                        "key": "",
-                        "price": "60",
-                        "img": "assets/images/produtos/porcaodePicanha.png"
-                    },
-                    {
-                        "name": "Porção Contra Filé",
-                        "quantidade": 0,
-                        "img": "assets/images/produtos/porcaodecontrafile.png",
-                        "key": "",
-                        "id": "840",
-                        "price": "40"
-                    },
-                    {
-                        "key": "",
-                        "name": "Porção Nuggets Frango",
-                        "quantidade": 0,
-                        "price": "20",
-                        "img": "assets/images/produtos/porcaodeNuggetsFrango.png",
-                        "id": "818"
-                    },
-                    {
-                        "name": "Porção Frango a Passarinho",
-                        "id": "866",
-                        "key": "",
-                        "price": "30000",
-                        "img": "assets/images/produtos/porcaodeFrangoPassarinho.png",
-                        "quantidade": 0
-                    },
-                    {
-                        "name": "Porção Grande Batata Frita",
-                        "quantidade": 0,
-                        "price": "30000",
-                        "img": "assets/images/produtos/FritasGrande.png",
-                        "id": "866",
-                        "key": ""
-                    },
-                    {
-                        "name": "Porção Pequena Batata Frita",
-                        "key": "",
-                        "price": "30000",
-                        "id": "30000",
-                        "img": "assets/images/produtos/FritasPequena.png",
-                        "quantidade": 0
-                    }
-                ]
-            }
-        ],
-        "id": "217"
-    }
-]
-    })
+//               },{
+//                 "id": Math.floor(Math.random() * 1000).toString(),
+//                 "name": "Vodkas",
+//                 "products": [
+//                     {
+//                         "price": 13,
+//                         "id": Math.floor(Math.random() * 1000).toString(),                      "img": "assets/images/produtos/smirnoffice.png",
+//                         "name": "Vodka Smirnoff Ice Long Neck",
+//                         "quantidade": 0
+//                     },
+//                     {
+//                         "price": 9.5,
+//                         "id": Math.floor(Math.random() * 1000).toString(),                      "name": "Vodka Smirnorff Lata",
+//                         "img": "assets/images/produtos/smirnofficelata.png",
+//                         "quantidade": 0
+//                     },
+//                     {
+//                         "quantidade": 0,
+//                         "name": "Vodka Smirnoff 1L",
+//                         "id": Math.floor(Math.random() * 1000).toString(),                      "price": 49,
+//                         "img": "assets/images/produtos/vodkasmirnoff1l.png"
+//                     },
+//                     {
+//                         "img": "assets/images/produtos/ousadia.png",
+//                         "id": Math.floor(Math.random() * 1000).toString(),                     "price": 7.5,
+//                         "quantidade": 0,
+//                         "name": "Vodka Ousadia"
+//                     },
+//                     {
+//                         "img": "assets/images/produtos/smirnoffsabor.png",
+//                         "quantidade": 0,
+//                         "price": 58,
+//                         "name": "Vodka Smirnorff Sabor",
+//                         "id": Math.floor(Math.random() * 1000).toString(),                 },
+//                     {
+//                         "id": Math.floor(Math.random() * 1000).toString(),                      "name": "Vodka Askov",
+//                         "img": "assets/images/produtos/askov.png",
+//                         "price": 18,
+//                         "quantidade": 0
+//                     },
+//                     {
+//                         "img": "assets/images/produtos/vodkaaskovsabor.png",
+//                         "id": Math.floor(Math.random() * 1000).toString(),                      "price": 18,
+//                         "name": "Vodka Askov Sabor 1L",
+//                         "quantidade": 0
+//                     }
+//                 ]
+//               }
+//         ],
+//         "name": "Adega",
+//         "id": Math.floor(Math.random() * 1000).toString(),
+//         "image2": "assets/images/glass.png",
+//         "image": "assets/images/glass.png"
+//     },
+//     {
+//         "key": "Beber",
+//         "image2": "assets/images/burguer.png",
+//         "image": "assets/images/burguer.png",
+//         "name": "Refeição",
+//         "itens": [
+//         {
+//                 "id":Math.floor(Math.random() * 1000).toString(),              "name": "Porções",
+//                 "products": [
+//                     {
+//                         "quantidade": 0,
+//                         "name": "Porção Calabresa",
+//                         "img": "assets/images/produtos/porcaodeCalabresa.png",
+//                         "price": "30",
+//                         "id":Math.floor(Math.random() * 1000).toString(),                      "key": ""
+//                     },
+//                     {
+//                         "quantidade": 0,
+//                         "name": "Porção Picanha",
+//                         "id":Math.floor(Math.random() * 1000).toString(),                     "key": "",
+//                         "price": "60",
+//                         "img": "assets/images/produtos/porcaodePicanha.png"
+//                     },
+//                     {
+//                         "name": "Porção Contra Filé",
+//                         "quantidade": 0,
+//                         "img": "assets/images/produtos/porcaodecontrafile.png",
+//                         "key": "",
+//                         "id":Math.floor(Math.random() * 1000).toString(),                      "price": "40"
+//                     },
+//                     {
+//                         "key": "",
+//                         "name": "Porção Nuggets Frango",
+//                         "quantidade": 0,
+//                         "price": "20",
+//                         "img": "assets/images/produtos/porcaodeNuggetsFrango.png",
+//                         "id":Math.floor(Math.random() * 1000).toString(),                 },
+//                     {
+//                         "name": "Porção Frango a Passarinho",
+//                         "id":Math.floor(Math.random() * 1000).toString(),                      "key": "",
+//                         "price": "30000",
+//                         "img": "assets/images/produtos/porcaodeFrangoPassarinho.png",
+//                         "quantidade": 0
+//                     },
+//                     {
+//                         "name": "Porção Grande Batata Frita",
+//                         "quantidade": 0,
+//                         "price": "30000",
+//                         "img": "assets/images/produtos/FritasGrande.png",
+//                         "id":Math.floor(Math.random() * 1000).toString(),                      "key": ""
+//                     },
+//                     {
+//                         "name": "Porção Pequena Batata Frita",
+//                         "key": "",
+//                         "price": "30000",
+//                         "id":Math.floor(Math.random() * 1000).toString(),                        "img": "assets/images/produtos/FritasPequena.png",
+//                         "quantidade": 0
+//                     }
+//                 ]
+//             }
+//         ],
+//         "id": Math.floor(Math.random() * 1000).toString()
+//     }
+// ]
+//     })
 
 
 

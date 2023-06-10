@@ -129,10 +129,12 @@ data.map((cardBdmap)=>{
                     Contentsubs.innerHTML+= `  
                         <div class="produto">
                                 <img src="`+productsMap.img +`" alt="" style="display:none;" ></img>
-                            <div class="prod-val">
+                          
+                                <div class="prod-val">
                                 <h3 class="title-prod">`+productsMap.name +`</h3> 
                                 <span class="valor">`+parseFloat(productsMap.price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})+`</span>
                             </div>
+
                             <div class="editProd" >
                                 <button key="`+productsMap.id +`" onclick="editPrd(this,`+productsMap.id +`); "><i class="fa-regular fa-pen-to-square"></i></button>
                                 
@@ -141,13 +143,14 @@ data.map((cardBdmap)=>{
                                 </button>
               
                             </div>
+
                             <div class="quantidade" style="display:none;">
                                 <button key="`+productsMap.id +`" onclick="addProd(this,`+productsMap.id +`); ">+</button>
                                 <input  id="`+productsMap.id +`" value="`+productsMap.quantidade +`" type="text" placeholder="0">
                                 <button key="`+productsMap.id +`" onclick="removeProd(this,`+productsMap.id +`); ">-</button>
               
                             </div>
-                        </div> 
+                       
                         </div>
                     `;
 
