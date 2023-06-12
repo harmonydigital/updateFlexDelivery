@@ -258,6 +258,8 @@ data.map((cardBdmap)=>{
     submit.onclick=()=>{ 
             modal.classList.toggle('show') 
 
+            console.log('modal',modal)
+
             var newListProd = []
             newProd={
                     id:Math.floor(Math.random() * 1000).toString(),
@@ -336,6 +338,7 @@ data.map((cardBdmap)=>{
             
                   if(productsMap.id==key){
                     
+                    
                     inputNome.value=productsMap.name 
                     inputPrice.value=productsMap.price
                     if(inputSearch){
@@ -403,121 +406,51 @@ data.map((cardBdmap)=>{
        
         
       
-        //  modalForm.addEventListener('submit',function(e){ 
-        //     e.preventDefault()
-        //     upDateProd(false)
-        // })
+         modalForm.addEventListener('submit',function(e){ 
+            e.preventDefault()
+            upDateProd()
+        })
   } 
  
   
 
-    upDateProd=(n,modalCall)=>{
-
-        console.log('chama',modalCall)
+    upDateProd=()=>{
+ 
 
         var modal=document.querySelector('.modal-container')
         modal.classList.toggle('show') 
 
-        modalCall.classList.toggle('show') 
-        modalCall.setAttribute('class','modal-container') 
+     
 
-        newListProd=[
-            {
-                id:Math.floor(Math.random() * 1000).toString(),
-                img:"assets/images/produtos/LancheLinguica.png",
-                key: "",
-                name:inputNome.value,
-                price:inputPrice.value,
-                quantidade:0
-            }
-
-        ]
-
-
-        if(n===true){  //NOVO PRODUTOS
-            key=document.getElementById('btnSalvar').getAttribute('key')
-
-         
-                 
-          
-                    data.forEach(apiData => { 
-                        apiData.itens.forEach(element => {  
-                            if(parseInt(element.id)===parseInt(key)){  
-
-                                element.products.forEach(ListProds => {   
-                                    
-                                    newListProd.push(ListProds) //inclui produtos antigos
-                                  
-
-                                });
-
-                            } 
-                            
-                        });
-                    });
-
-                    
-                    data.forEach(apiData => { 
-                        apiData.itens.forEach(element => {  
-                            if(parseInt(element.id)===parseInt(key)){  
-                                element.products=newListProd 
-
-                            } 
-                        });
-                    });
-
-
-                    // newListProd.push(arrNewProd) //inclui produto novo
-
-                    // console.log("arrNewProd",arrNewProd)
-                    // console.log("data",data)
-
-        }
-      
         
   
        
-        // data.map((apiData)=>{   
+        data.map((apiData)=>{   
 
            
 
-        //     apiData.itens.map((itensMap)=>{     
-        //          itensMap.products.map((productsMap)=>{  
+            apiData.itens.map((itensMap)=>{     
+                 itensMap.products.map((productsMap)=>{  
 
 
 
-        //             //ADIÇÃO
-
-        //             // console.log('itensMap',itensMap)
-        //             // console.log('nome',inputNome.value)
-        //             // console.log('preco',inputPrice.value)
+                     
 
                     
 
-        //             if(itensMap.id==catid){
-
-        //                 // itensMap.products.push(arrNewProd)
-        //                 // console.log(itensMap.products)
-
-        //             }
-
-        //             //EDIÇÃO
-            
-        //             if(n===false){
-        //                 if(productsMap.id==idProdThis){
+                
+                        if(productsMap.id==idProdThis){
                             
-        //                         productsMap.name=inputNome.value
-        //                         // productsMap.price=parseInt(inputPrice.value).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
-        //                         productsMap.price=inputPrice.value 
+                                productsMap.name=inputNome.value
+                                // productsMap.price=parseInt(inputPrice.value).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+                                productsMap.price=inputPrice.value 
  
-        //                 }
-        //             }else{
-                       
-        //             }
-        //          }) 
-        //     }) 
+                        }
+                    
+                 }) 
+            }) 
     
-        //  }) 
+         }) 
      
          
          getApi(categoriesContainer,data, false)
