@@ -20,8 +20,7 @@ fullScreen=()=>{
     }
 } 
 data.map((cardBdmap)=>{
-        console.log(cardBdmap)
-
+       
     // cardBdmap.data.map((allDataBd)=>{
     //     console.log("allDataBd")
        
@@ -30,10 +29,9 @@ data.map((cardBdmap)=>{
  getApi=(container,databd,referencia)=>{
     container.innerHTML =` <div class="tab"> </div>`;
     prods=""
-    getdatabd=databd 
-
-    console.log(databd)
+    getdatabd=databd  
     ref=referencia
+    catid=0
 
     if(data.length==0){
         getdatabd.map((databdMap)=>{
@@ -113,8 +111,8 @@ data.map((cardBdmap)=>{
            
             document.getElementById(apiData.id.toString()).innerHTML+= ` 
                
-                <div id="`+tabContentMap.id +`" class="tabcontent">  
-                                       <button class='btn addProd'><i class="fa-solid fa-bottle-droplet"></i> ADICIONAR PRODUTOS EM `+tabContentMap.name    +` </button>  
+                <div id="`+tabContentMap.id +`" class="tabcontent">   
+                    <button key=`+tabContentMap.id +` onclick="createProd(event)" class='btn addProd'><i class="fa-solid fa-bottle-droplet"></i> ADICIONAR PRODUTOS EM `+tabContentMap.name    +` </button>  
 
                 </div>
 
@@ -240,6 +238,80 @@ data.map((cardBdmap)=>{
     
   }
 
+  createProd=(event)=>{
+
+
+    var submit=document.getElementById('btnSalvar')
+    
+    var modal=document.querySelector('.modal-container')
+    modal.classList.toggle('show') 
+    const key=event.target.getAttribute('key') 
+
+      
+    var h2Title=document.querySelector('.modal h2') 
+    h2Title.innerHTML='Novo produto.'
+
+
+    submit.setAttribute('key',key)
+
+
+    submit.onclick=()=>{ 
+            modal.classList.toggle('show') 
+
+            var newListProd = []
+            newProd={
+                    id:Math.floor(Math.random() * 1000).toString(),
+                    img:"assets/images/produtos/semfoto.png",
+                    key: "",
+                    name:inputNome.value,
+                    price:inputPrice.value,
+                    quantidade:0
+                }
+    
+            
+
+            
+            data.forEach(apiData => { 
+                apiData.itens.forEach(element => {  
+                    if(parseInt(element.id)===parseInt(key)){  
+
+                        element.products.forEach(ListProds => {    
+
+                            newListProd.push(ListProds)
+
+                        });
+
+                    } 
+                    
+                });
+            });
+
+            newListProd.push(newProd)
+            
+            data.forEach(apiData => { 
+                apiData.itens.forEach(element => {  
+                    if(parseInt(element.id)===parseInt(key)){  
+                        element.products=newListProd
+                        
+
+                    } 
+                    
+                });
+            });
+            
+            getApi(categoriesContainer,data, false)
+            
+
+         
+    }
+     
+  }
+
+
+
+
+
+
   editPrd=(ProdThis, inputProd)=>{
   
         var key=ProdThis.getAttribute('key')
@@ -277,9 +349,7 @@ data.map((cardBdmap)=>{
          })  
 
   } 
-  
-
-     
+   
   inputNome=document.getElementById("m-nome")
   inputCategory=document.getElementById("m-categoria")
   inputPrice=document.getElementById("m-price")
@@ -289,6 +359,9 @@ data.map((cardBdmap)=>{
    editPrd=(ProdThis, inputProd)=>{
  
         // conso.le.log(ProdThis, inputProd)
+        var h2Title=document.querySelector('.modal h2')
+        h2Title.innerHTML='Editar produto.'
+
         idProdThis=false
         var key=ProdThis.getAttribute('key')
         var modal=document.querySelector('.modal-container')
@@ -304,20 +377,24 @@ data.map((cardBdmap)=>{
                  itensMap.products.map((productsMap)=>{ 
                 
                
-            
+                //   ADIÇÃO
+                    
+                //   EDIÇÃO
                   if(productsMap.id==key ){
                     idProdThis=key
-                    inputNome.value=productsMap.name
-                    // inputCategory.value=productsMap.categoria
+                    inputNome.value=productsMap.name 
                     inputPrice.value=productsMap.price 
 
-
-                        console.log(productsMap.price,'productsMap.price ')
+ 
                     if(inputSearch){
                         inputSearch.setAttribute('value',value)
     
                     }
                   }
+
+
+
+
                  }) 
             }) 
     
@@ -326,39 +403,122 @@ data.map((cardBdmap)=>{
        
         
       
-
+        //  modalForm.addEventListener('submit',function(e){ 
+        //     e.preventDefault()
+        //     upDateProd(false)
+        // })
   } 
-
-  modalForm.addEventListener('submit',function(e){ 
-        e.preventDefault()
-        upDateProd()
-    })
-
-    upDateProd=()=>{
  
-         
+  
+
+    upDateProd=(n,modalCall)=>{
+
+        console.log('chama',modalCall)
+
         var modal=document.querySelector('.modal-container')
         modal.classList.toggle('show') 
-      
-        data.map((apiData)=>{   
-            apiData.itens.map((itensMap)=>{     
-                 itensMap.products.map((productsMap)=>{  
-            
-                  if(productsMap.id==idProdThis){
-                     
-                        productsMap.name=inputNome.value
-                        // productsMap.price=parseInt(inputPrice.value).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
-                        productsMap.price=inputPrice.value 
 
-                        console.log(productsMap.price,'productsMap.price ')
-                  }
-                 }) 
-            }) 
-    
-         }) 
-    
+        modalCall.classList.toggle('show') 
+        modalCall.setAttribute('class','modal-container') 
+
+        newListProd=[
+            {
+                id:Math.floor(Math.random() * 1000).toString(),
+                img:"assets/images/produtos/LancheLinguica.png",
+                key: "",
+                name:inputNome.value,
+                price:inputPrice.value,
+                quantidade:0
+            }
+
+        ]
+
+
+        if(n===true){  //NOVO PRODUTOS
+            key=document.getElementById('btnSalvar').getAttribute('key')
+
+         
+                 
+          
+                    data.forEach(apiData => { 
+                        apiData.itens.forEach(element => {  
+                            if(parseInt(element.id)===parseInt(key)){  
+
+                                element.products.forEach(ListProds => {   
+                                    
+                                    newListProd.push(ListProds) //inclui produtos antigos
+                                  
+
+                                });
+
+                            } 
+                            
+                        });
+                    });
+
+                    
+                    data.forEach(apiData => { 
+                        apiData.itens.forEach(element => {  
+                            if(parseInt(element.id)===parseInt(key)){  
+                                element.products=newListProd 
+
+                            } 
+                        });
+                    });
+
+
+                    // newListProd.push(arrNewProd) //inclui produto novo
+
+                    // console.log("arrNewProd",arrNewProd)
+                    // console.log("data",data)
+
+        }
+      
+        
+  
        
-         console.log(data,'data ')
+        // data.map((apiData)=>{   
+
+           
+
+        //     apiData.itens.map((itensMap)=>{     
+        //          itensMap.products.map((productsMap)=>{  
+
+
+
+        //             //ADIÇÃO
+
+        //             // console.log('itensMap',itensMap)
+        //             // console.log('nome',inputNome.value)
+        //             // console.log('preco',inputPrice.value)
+
+                    
+
+        //             if(itensMap.id==catid){
+
+        //                 // itensMap.products.push(arrNewProd)
+        //                 // console.log(itensMap.products)
+
+        //             }
+
+        //             //EDIÇÃO
+            
+        //             if(n===false){
+        //                 if(productsMap.id==idProdThis){
+                            
+        //                         productsMap.name=inputNome.value
+        //                         // productsMap.price=parseInt(inputPrice.value).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+        //                         productsMap.price=inputPrice.value 
+ 
+        //                 }
+        //             }else{
+                       
+        //             }
+        //          }) 
+        //     }) 
+    
+        //  }) 
+     
          
          getApi(categoriesContainer,data, false)
         
@@ -454,8 +614,7 @@ data.map((cardBdmap)=>{
        
         if(1==0){  
             // if(database.length>0){ 
-
-            console.log('2 compra') 
+ 
             lastOrderDoc=JSON.parse(localStorage.getItem("last"))
             
     
@@ -591,7 +750,7 @@ closeCheckout=()=>{
                 
             }); 
             }else{
-                console.log(event)
+               
             }
 
 
