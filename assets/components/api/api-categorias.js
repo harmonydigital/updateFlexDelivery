@@ -208,29 +208,29 @@ data.map((cardBdmap)=>{
  
     var key=ProdThis.getAttribute('key')
      
-      input=document.getElementById(inputProd)
-      inputSearch=document.getElementById(inputProd+'search')
+    input=document.getElementById(inputProd)
+    inputSearch=document.getElementById(inputProd+'search')
       
   
-    data.map((apiData)=>{   
-        apiData.itens.map((itensMap)=>{     
-             itensMap.products.map((productsMap)=>{ 
-            
-           
-        
-              if(productsMap.id==key ){
-                productsMap.quantidade++
-                value=productsMap.quantidade 
-                input.setAttribute('value',value)
-                if(inputSearch){
-                    inputSearch.setAttribute('value',value)
+data.map((apiData)=>{   
+apiData.itens.map((itensMap)=>{     
+        itensMap.products.map((productsMap)=>{ 
+    
+    
 
-                }
-              }
-             }) 
+        if(productsMap.id==key ){
+        productsMap.quantidade++
+        value=productsMap.quantidade 
+        input.setAttribute('value',value)
+        if(inputSearch){
+            inputSearch.setAttribute('value',value)
+
+        }
+        }
         }) 
+}) 
 
-     }) 
+}) 
 
      
      refrashCart(inputProd)
@@ -244,10 +244,13 @@ data.map((cardBdmap)=>{
     var submit=document.getElementById('btnSalvar')
     
     var modal=document.querySelector('.modal-container')
-    modal.classList.toggle('show') 
+    
+    idmodal=document.getElementById('modalcontainer')
     const key=event.target.getAttribute('key') 
+ 
 
-      
+    idmodal.classList.toggle('show') 
+
     var h2Title=document.querySelector('.modal h2') 
     h2Title.innerHTML='Novo produto.'
 
@@ -256,10 +259,21 @@ data.map((cardBdmap)=>{
 
 
     submit.onclick=()=>{ 
-            modal.classList.toggle('show') 
+        
+        idmodal.classList.toggle('show') 
 
-            console.log('modal',modal)
+          
+        inputNome=document.getElementById("m-nome").value
+        inputCategory=document.getElementById("m-categoria")
+        inputPrice=document.getElementById("m-price")
 
+
+
+        if(inputNome.length>3 & inputPrice.length>0){
+
+
+
+                
             var newListProd = []
             newProd={
                     id:Math.floor(Math.random() * 1000).toString(),
@@ -304,6 +318,15 @@ data.map((cardBdmap)=>{
             getApi(categoriesContainer,data, false)
             
 
+
+
+        }else{
+            event.preventDefault()
+            alert('Preencha os campos')
+        }
+  
+
+         
          
     }
      
@@ -494,46 +517,43 @@ data.map((cardBdmap)=>{
                 itensMap.products.map((productsMap)=>{ 
                 
     
-                if(productsMap.quantidade>0){
-                    cartQtd+=productsMap.quantidade
-                    itensTotal+=productsMap.quantidade
-                    prodMultiply=productsMap.price*productsMap.quantidade
-                    totalCart+=prodMultiply
-                    list+=productsMap.name 
-                    prodsSelct.push(productsMap)
-                    //  console.log(prodsSelct)
+                    if(productsMap.quantidade>0){
+                        
+                        cartQtd+=productsMap.quantidade
+                        itensTotal+=productsMap.quantidade
+                        prodMultiply=productsMap.price*productsMap.quantidade
+                        totalCart+=prodMultiply
+                        list+=productsMap.name 
+                        prodsSelct.push(productsMap) 
+                
+                        cartPreview.innerHTML= `    <div >     <button id="cartPreview" onclick="showCart()"><img src="assets/images/shopping-cart.png" alt=""></button> <span class="qtdIcon">`+cartQtd +` </span>   </div>  `;  
+                        cartContainer.innerHTML+= `  
+                        
+                        <div class="produto">
+                                        <img src="`+productsMap.img +`" alt="">
+                                    <div class="prod-val">
+                                        <h3 class="title-prod"> `+productsMap.name +` </h3> 
+                                        <span class="valor">`+prodMultiply.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) +` </span>
+                                    </div>
+                                    <div class="quantidade">
+                                            <button key="`+productsMap.id +`" onclick="addProd(this,`+productsMap.id +`); ">+</button>
+                                        <input  id="`+productsMap.id +`Cart" value="`+productsMap.quantidade +`" type="text" placeholder="0">
+                                        <button key="`+productsMap.id +`" onclick="removeProd(this,`+productsMap.id +`); ">-</button>
+                    
+                                    </div>
+                                    <button><img src="assets/images/trash.png" style="width: 20px; height: 21px;"></button>
 
-                    
-                    
-            
-                    cartPreview.innerHTML= `    <div >     <button id="cartPreview" onclick="showCart()"><img src="assets/images/shopping-cart.png" alt=""></button> <span class="qtdIcon">`+cartQtd +` </span>   </div>  `;  
-                    cartContainer.innerHTML+= `  
-                    
-                    <div class="produto">
-                                    <img src="`+productsMap.img +`" alt="">
-                                <div class="prod-val">
-                                    <h3 class="title-prod"> `+productsMap.name +` </h3> 
-                                    <span class="valor">`+prodMultiply.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) +` </span>
                                 </div>
-                                <div class="quantidade">
-                                        <button key="`+productsMap.id +`" onclick="addProd(this,`+productsMap.id +`); ">+</button>
-                                    <input  id="`+productsMap.id +`Cart" value="`+productsMap.quantidade +`" type="text" placeholder="0">
-                                    <button key="`+productsMap.id +`" onclick="removeProd(this,`+productsMap.id +`); ">-</button>
-                
-                                </div>
-                                <button><img src="assets/images/trash.png" style="width: 20px; height: 21px;"></button>
-
-                            </div>
-                            
-                    `;  
-                    // msg+=``+productsMap.quantidade +`,`+productsMap.name +`,`+prodMultiply.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) +`` 
-                
-                    url+=""+productsMap.quantidade+"un. / *"+productsMap.name+"* / " + prodMultiply.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
-                    +"%0a" // Dados do formulário
+                                
+                        `;  
+                        // msg+=``+productsMap.quantidade +`,`+productsMap.name +`,`+prodMultiply.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) +`` 
+                    
+                        url+=""+productsMap.quantidade+"un. / *"+productsMap.name+"* / " + prodMultiply.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+                        +"%0a" // Dados do formulário
 
 
-                }
-                
+                    }
+                    
                 
                 }) 
 
