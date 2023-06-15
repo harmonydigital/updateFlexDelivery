@@ -16,3 +16,16 @@ var swiper = new Swiper(".mySwiper", {
           },
           
           });
+
+
+
+          generateID=()=>{   
+
+            var currencyHour=relogio().replaceAll(':','').toString() 
+            var currencyID=Math.floor(Math.random() * 1000).toString() 
+            var ID=currencyID+currencyHour+currencyID
+
+            return ID
+          } 
+
+          
