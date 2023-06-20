@@ -240,12 +240,11 @@ apiData.itens.map((itensMap)=>{
 
   createProd=(event)=>{
 
-
-    var submit=document.getElementById('btnSalvar')
-    
-    var modal=document.querySelector('.modal-container')
+    var submit=document.getElementById('btnSalvar') 
     
     idmodal=document.getElementById('modalcontainer')
+
+
     const key=event.target.getAttribute('key') 
  
 
@@ -258,34 +257,26 @@ apiData.itens.map((itensMap)=>{
     submit.setAttribute('key',key)
 
 
-    submit.onclick=()=>{ 
-        
-        idmodal.classList.toggle('show') 
-
+    submit.onclick=(event)=>{  
           
         inputNome=document.getElementById("m-nome").value
         inputCategory=document.getElementById("m-categoria")
         inputPrice=document.getElementById("m-price")
 
+       
+        if(inputNome.length>3){ 
 
-
-        if(inputNome.length>3 & inputPrice.length>0){
-
-
-
-                
+            idmodal.classList.toggle('show')  
             var newListProd = []
             newProd={
                     id:Math.floor(Math.random() * 1000).toString(),
                     img:"assets/images/produtos/semfoto.png",
                     key: "",
-                    name:inputNome.value,
+                    name:inputNome, 
                     price:inputPrice.value,
                     quantidade:0
                 }
-    
-            
-
+     
             
             data.forEach(apiData => { 
                 apiData.itens.forEach(element => {  
@@ -315,13 +306,14 @@ apiData.itens.map((itensMap)=>{
                 });
             });
             
+
             getApi(categoriesContainer,data, false)
             
 
 
 
         }else{
-            event.preventDefault()
+            // event.preventDefault()
             alert('Preencha os campos')
         }
   
