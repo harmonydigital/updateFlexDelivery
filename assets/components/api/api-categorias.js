@@ -332,8 +332,8 @@ apiData.itens.map((itensMap)=>{
   editPrd=(ProdThis, inputProd)=>{
   
         var key=ProdThis.getAttribute('key')
-        var modal=document.querySelector('.modal-container')
-        modal.classList.toggle('show')
+        var modalId=document.getElementById('modal-container')
+        modalId.classList.toggle('show')
         
         inputNome=document.getElementById("m-nome")
         inputCategory=document.getElementById("m-categoria")
@@ -432,8 +432,8 @@ apiData.itens.map((itensMap)=>{
     upDateProd=()=>{
  
 
-        var modal=document.querySelector('.modal-container')
-        modal.classList.toggle('show') 
+        var modalId=document.getElementById('modal-container')
+        modalId.classList.toggle('show') 
 
      
 
