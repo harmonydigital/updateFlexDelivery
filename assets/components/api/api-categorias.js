@@ -259,12 +259,12 @@ apiData.itens.map((itensMap)=>{
 
     submit.onclick=(event)=>{  
           
-        inputNome=document.getElementById("m-nome").value
+        inputNome=document.getElementById("m-nome")
         inputCategory=document.getElementById("m-categoria")
         inputPrice=document.getElementById("m-price")
 
        
-        if(inputNome.length>3){ 
+        if(inputNome.value.length>3){ 
 
             idmodal.classList.toggle('show')  
             var newListProd = []
@@ -272,7 +272,7 @@ apiData.itens.map((itensMap)=>{
                     id:Math.floor(Math.random() * 1000).toString(),
                     img:"assets/images/produtos/semfoto.png",
                     key: "",
-                    name:inputNome, 
+                    name:inputNome.value, 
                     price:inputPrice.value,
                     quantidade:0
                 }
@@ -306,7 +306,9 @@ apiData.itens.map((itensMap)=>{
                 });
             });
             
+            console.log( document.querySelector('.modal form'))
 
+            document.querySelector('.modal form').reset()
             getApi(categoriesContainer,data, false)
             
 
@@ -399,6 +401,8 @@ apiData.itens.map((itensMap)=>{
                     
                 //   EDIÇÃO
                   if(productsMap.id==key ){
+
+                    console.log(productsMap.name)
                     idProdThis=key
                     inputNome.value=productsMap.name 
                     inputPrice.value=productsMap.price 
