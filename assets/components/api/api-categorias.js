@@ -1,10 +1,22 @@
  data=[]
 database=[]
 msgLoadContainer=document.getElementById('msgLoad')
-
 var apiContainer=document.getElementById('api') 
 var categoriesContainer=document.getElementById('categories') 
 STATUSMESA=false
+
+btnSubmitformSalvar=document.getElementById('btnSalvar')
+console.log(document.getElementById('btnSalvar'))
+
+
+modalToggole=()=>{
+    modalElement=document.getElementById('modalcontainer') 
+    if(modalElement){ 
+        return modalElement.classList.toggle('show')
+    }else{
+        return console.log('modal não encontrado...')
+    }
+}
 
 fullScreen=()=>{
     var element = document.documentElement;
@@ -19,13 +31,8 @@ fullScreen=()=>{
         element.msRequestFullscreen();
     }
 } 
-data.map((cardBdmap)=>{
-       
-    // cardBdmap.data.map((allDataBd)=>{
-    //     console.log("allDataBd")
-       
-    // })
-})
+
+
  getApi=(container,databd,referencia)=>{
     container.innerHTML =` <div class="tab"> </div>`;
     prods=""
@@ -168,8 +175,7 @@ data.map((cardBdmap)=>{
     
  }
   
-//  categoriesContainer ? getApi(categoriesContainer) : console.log("..");
-
+ 
 
  var value = 0
 
@@ -240,135 +246,20 @@ apiData.itens.map((itensMap)=>{
 
   createProd=(event)=>{
 
-    var submit=document.getElementById('btnSalvar') 
-    
-    idmodal=document.getElementById('modalcontainer')
-
-
-    const key=event.target.getAttribute('key') 
- 
-
-    idmodal.classList.toggle('show') 
-
+    var submitbtn=document.getElementById('btnSalvar')   
+    const key=event.target.getAttribute('key')   
     var h2Title=document.querySelector('.modal h2') 
-    h2Title.innerHTML='Novo produto.'
+    // 
+    h2Title.innerHTML='Novo produto.'  
+    submitbtn.setAttribute('key',key) 
 
+    submitbtn.setAttribute('status','create')
+    //submitbtn
+    modalToggole()
 
-    submit.setAttribute('key',key)
-
-
-    submit.onclick=(event)=>{  
-          
-        inputNome=document.getElementById("m-nome")
-        inputCategory=document.getElementById("m-categoria")
-        inputPrice=document.getElementById("m-price")
-
-       
-        if(inputNome.value.length>3){ 
-
-            idmodal.classList.toggle('show')  
-            var newListProd = []
-            newProd={
-                    id:Math.floor(Math.random() * 1000).toString(),
-                    img:"assets/images/produtos/semfoto.png",
-                    key: "",
-                    name:inputNome.value, 
-                    price:inputPrice.value,
-                    quantidade:0
-                }
-     
-            
-            data.forEach(apiData => { 
-                apiData.itens.forEach(element => {  
-                    if(parseInt(element.id)===parseInt(key)){  
-
-                        element.products.forEach(ListProds => {    
-
-                            newListProd.push(ListProds)
-
-                        });
-
-                    } 
-                    
-                });
-            });
-
-            newListProd.push(newProd)
-            
-            data.forEach(apiData => { 
-                apiData.itens.forEach(element => {  
-                    if(parseInt(element.id)===parseInt(key)){  
-                        element.products=newListProd
-                        
-
-                    } 
-                    
-                });
-            });
-            
-            console.log( document.querySelector('.modal form'))
-
-            document.querySelector('.modal form').reset()
-            getApi(categoriesContainer,data, false)
-            
-
-
-
-        }else{
-            // event.preventDefault()
-            alert('Preencha os campos')
-        }
-  
-
-         
-         
-    }
-     
   }
-
-
-
-
-
-
-  editPrd=(ProdThis, inputProd)=>{
-  
-        var key=ProdThis.getAttribute('key')
-        var modalId=document.getElementById('modal-container')
-        modalId.classList.toggle('show')
-        
-        inputNome=document.getElementById("m-nome")
-        inputCategory=document.getElementById("m-categoria")
-        inputPrice=document.getElementById("m-price")
-  
-
-         
-          input=document.getElementById(inputProd)
-          inputSearch=document.getElementById(inputProd+'search')
-          
-      
-        data.map((apiData)=>{   
-            apiData.itens.map((itensMap)=>{     
-                 itensMap.products.map((productsMap)=>{ 
-                
-               
-            
-                  if(productsMap.id==key){
-                    
-                    
-                    inputNome.value=productsMap.name 
-                    inputPrice.value=productsMap.price
-                    if(inputSearch){
-                        inputSearch.setAttribute('value',value)
-    
-                    }
-                  }
-                 }) 
-            }) 
-    
-         })  
-
-  } 
+ 
+ 
    
   inputNome=document.getElementById("m-nome")
   inputCategory=document.getElementById("m-categoria")
@@ -387,7 +278,9 @@ apiData.itens.map((itensMap)=>{
         var modal=document.querySelector('.modal-container')
         modal.classList.toggle('show')
      
-         
+        var submitbtn=document.getElementById('btnSalvar')   
+
+        submitbtn.setAttribute('status','update')
           input=document.getElementById(inputProd)
           inputSearch=document.getElementById(inputProd+'search')
           
@@ -401,8 +294,6 @@ apiData.itens.map((itensMap)=>{
                     
                 //   EDIÇÃO
                   if(productsMap.id==key ){
-
-                    console.log(productsMap.name)
                     idProdThis=key
                     inputNome.value=productsMap.name 
                     inputPrice.value=productsMap.price 
@@ -425,45 +316,25 @@ apiData.itens.map((itensMap)=>{
        
         
       
-         modalForm.addEventListener('submit',function(e){ 
-            e.preventDefault()
-            upDateProd()
-        })
+        //  modalForm.addEventListener('submit',function(e){ 
+        //     e.preventDefault()
+        //     upDateProd()
+        // })
   } 
  
   
 
     upDateProd=()=>{
  
-
-        var modalId=document.getElementById('modal-container')
-        modalId.classList.toggle('show') 
-
-     
-
-        
-  
+ 
        
-        data.map((apiData)=>{   
-
-           
-
+        data.map((apiData)=>{     
             apiData.itens.map((itensMap)=>{     
-                 itensMap.products.map((productsMap)=>{  
-
-
-
-                     
-
-                    
-
-                
-                        if(productsMap.id==idProdThis){
-                            
+                 itensMap.products.map((productsMap)=>{    
+                        if(productsMap.id==idProdThis){ 
                                 productsMap.name=inputNome.value
                                 // productsMap.price=parseInt(inputPrice.value).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
-                                productsMap.price=inputPrice.value 
- 
+                                productsMap.price=inputPrice.value  
                         }
                     
                  }) 
@@ -665,6 +536,62 @@ sendOrder=(event)=>{
     }
 }
 
+
+innerNewProd=()=>{
+
+    var key=document.getElementById('btnSalvar').getAttribute('key')
+    var newListProd = []
+        newProd={
+                id:Math.floor(Math.random() * 1000).toString(),
+                img:"assets/images/produtos/semfoto.png",
+                key: "",
+                name:inputNome.value, 
+                price:inputPrice.value,
+                quantidade:0
+            }
+ 
+        
+        data.forEach(apiData => { 
+            apiData.itens.forEach(element => {  
+                if(parseInt(element.id)===parseInt(key)){  
+
+                    element.products.forEach(ListProds => {    
+
+                        newListProd.push(ListProds)
+
+                    });
+
+                } 
+                
+            });
+        });
+
+        newListProd.push(newProd)
+        
+        data.forEach(apiData => { 
+            apiData.itens.forEach(element => {  
+                if(parseInt(element.id)===parseInt(key)){  
+                    element.products=newListProd
+                    
+
+                } 
+                
+            });
+        });
+        
+
+        getApi(categoriesContainer,data, false)
+        
+ } 
+updateNewProd=()=>{{
+   
+    var iname=document.getElementById('m-nome')
+     console.log('new prod',iname.value.length)
+
+    
+     iname.value.length>0  ? innerNewProd() : alert('Preencha os campos..')
+}}
+
 closeCheckout=()=>{ 
     containerCheckout.classList.toggle("hide");
 }
@@ -710,3 +637,10 @@ closeCheckout=()=>{
     }
  
   
+
+    btnSubmitformSalvar.addEventListener('click',(e)=>{
+        e.preventDefault()
+        attr=e.target.getAttribute('status')
+        modalToggole()
+         attr==='create' ? updateNewProd() : upDateProd()
+    })
