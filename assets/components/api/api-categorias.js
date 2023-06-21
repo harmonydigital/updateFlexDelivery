@@ -4,7 +4,7 @@ msgLoadContainer=document.getElementById('msgLoad')
 var apiContainer=document.getElementById('api') 
 var categoriesContainer=document.getElementById('categories') 
 STATUSMESA=false
-
+msgLoading=document.getElementById('msgLoading')
 btnSubmitformSalvar=document.getElementById('btnSalvar')
 console.log(document.getElementById('btnSalvar'))
 
@@ -326,6 +326,7 @@ apiData.itens.map((itensMap)=>{
 
     upDateProd=()=>{
  
+        msgLoading.classList.toggle('show')
  
        
         data.map((apiData)=>{     
@@ -586,8 +587,7 @@ innerNewProd=()=>{
 updateNewProd=()=>{{
    
     var iname=document.getElementById('m-nome')
-     console.log('new prod',iname.value.length)
-
+    msgLoading.classList.toggle('show') 
     
      iname.value.length>0  ? innerNewProd() : alert('Preencha os campos..')
 }}
@@ -641,6 +641,12 @@ closeCheckout=()=>{
     btnSubmitformSalvar.addEventListener('click',(e)=>{
         e.preventDefault()
         attr=e.target.getAttribute('status')
+        //
+        msgLoading.classList.toggle('show') 
+
+        setTimeout(function(){ 
+            attr==='create' ? updateNewProd() : upDateProd() 
+       }, 500);
+        
         modalToggole()
-         attr==='create' ? updateNewProd() : upDateProd()
     })
